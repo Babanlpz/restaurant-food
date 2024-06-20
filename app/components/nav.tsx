@@ -14,7 +14,7 @@ const Nav: React.FC<NavProps> = ({ cartQuantity }) => {
   const router = useRouter();
 
   const menu = [
-    { name: "Home", icon: <FaHome /> },
+    { name: "Acceuil", icon: <FaHome /> },
     { name: "Nos pizzas", icon: <FaPizzaSlice /> },
     { name: "Contact", icon: <IoMdMail /> },
   ];
