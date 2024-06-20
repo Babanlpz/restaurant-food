@@ -7,7 +7,7 @@ export default function Header() {
         </h1>
         <p className="text-center md:text-left mb-2">
           Une bouchée et vous serez accro: Découvrez Nos créations Artisanale et
-          Nos Classiques Incontournables
+          Nos Classiques Incontournables !
         </p>
         <a
           href="#pizzaList"
