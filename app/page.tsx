@@ -9,6 +9,7 @@ import { collection, doc, getDoc } from "firebase/firestore";
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ListPizza from "./components/ListPizza";
+import Footer from "./components/Footer";
 
 
 export default function Home() {
@@ -37,8 +38,9 @@ export default function Home() {
     <>
       <Nav cartQuantity={cardQuantity} />
       <Header />
-      <ListPizza />
+      <ListPizza pizzas={pizzas} addToCart={addToCart}/>
       <ToastContainer />
+      <Footer />
     </>
   );
 }
