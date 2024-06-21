@@ -1,32 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Pizza } from "./Type/Type";
-import Nav from "./components/Nav";
-import Header from "./components/Header";
-import {db } from "./db/firebaseConfig";
-import { collection, doc, getDoc } from "firebase/firestore";
-import { ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ListPizza from "./components/ListPizza";
 import Footer from "./components/Footer";
-
+import Header from "./components/Header";
+import ListPizza from "./components/ListPizza";
+import Nav from "./components/Nav";
+import { db } from "./db/firebaseConfig";
 
 export default function Home() {
   const [cardQuantity, setCardQuantity] = useState(0);
   const [pizzas, setPizzas] = useState<Pizza[]>([]);
 
-
   useEffect(() => {
-   const fetchData = async () => {
-    const pizzaCollection = collection(db, "pizza");
-    const pizzaSnapshot = await getDoc(pizzaCollection);
-    const pizzaData = pizzaSnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    })) as Pizza[];
-    setPizzas(pizzaData);
-   }
+    const fetchData = async () => {
+      const pizzaCollection = collection(db, "pizza");
+      const pizzaSnapshot = await getDocs(pizzaCollection);
+      const pizzaData = pizzaSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })) as Pizza[];
+      setPizzas(pizzaData);
+    };
     fetchData();
   }, []);
 
@@ -38,7 +36,7 @@ export default function Home() {
     <>
       <Nav cartQuantity={cardQuantity} />
       <Header />
-      <ListPizza pizzas={pizzas} addToCart={addToCart}/>
+      <ListPizza pizzas={pizzas} addToCart={addToCart} />
       <ToastContainer />
       <Footer />
     </>

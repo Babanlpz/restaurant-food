@@ -18,7 +18,7 @@ const Card: React.FC<CardProps> = ({ pizza, addToCart, onCardClick }) => {
   };
 
   return (
-    <div className="border border-gray-200 rounded-md p-4 shadow-md relative cursor-pointer hover: mt-[-10px] transition-all">
+    <div className="border border-gray-200 rounded-md p-4 shadow-md relative cursor-pointer hover:mt-[-10px] transition-all">
       <img
         src={pizza.image}
         alt={pizza.name}
@@ -29,8 +29,18 @@ const Card: React.FC<CardProps> = ({ pizza, addToCart, onCardClick }) => {
       </div>
 
       <div className="flex items-center justify-center gap-2">
-        <button className="bg-orange-600 text-white px-4 py-2 mt-4 rounded-md hover:bg-orange-700">Voir Pizza</button>
-        <button onClick={handleAddToCart} className="bg-orange-600 text-white px-4 py-2 mt-4 rounded-md hover:bg-orange-700">Commander</button>
+        <button
+          onClick={() => onCardClick(pizza)}
+          className="bg-orange-600 text-white px-4 py-2 mt-4 rounded-md hover:bg-orange-700"
+        >
+          Voir Pizza
+        </button>
+        <button
+          onClick={handleAddToCart}
+          className="bg-orange-600 text-white px-4 py-2 mt-4 rounded-md hover:bg-orange-700"
+        >
+          Commander
+        </button>
       </div>
     </div>
   );
